@@ -17,6 +17,7 @@
     "clsx": "^2.1.1",
     "embla-carousel": "^8.6.0",
     "embla-carousel-solid": "^8.6.0",
+    "solid-icons": "^1.1.0",
     "solid-js": "^1.9.10",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.17"
