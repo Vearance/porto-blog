@@ -1,24 +1,55 @@
-import '../styles/global.css'
+---
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import { Separator } from "@/components/ui/separator";
+import "@/styles/global.css";
+import { ClientRouter, fade } from "astro:transitions";
+import favicon from "../assets/favicon.ico";
+
+export type LayoutProps = {
+  title: string;
+};
+
+const { title = "Veacodes" } = Astro.props as LayoutProps;
+---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+<html lang="en" class="font-sf-pro">
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Veacodes's portfolio page" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href={favicon} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <script>
+      import "iconify-icon";
+      import { addCollection } from "iconify-icon";
+      import simpleIcons from "@iconify-json/simple-icons/icons.json";
+      
+      addCollection(simpleIcons);
+    </script>
+
+    <ClientRouter />
+
+  </head>
+  <body class="antialiased bg-gray-50">
+    <div
+      class="min-h-dvh w-dvw max-w-4xl mx-auto flex flex-col gap-6 bg-background py-12 px-3 sm:p-12"
+    >
+      <Header />
+      <main
+        class="flex flex-col gap-12 py-6"
+        transition:animate={fade({ duration: "0.4s" })}
+      >
+        <slot />
+        <div class="flex flex-col gap-6">
+          <Separator />
+          <Footer />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
