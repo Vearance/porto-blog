@@ -23,7 +23,7 @@ const skillIcons = [
   "simple-icons:langgraph",
   "simple-icons:docker",
   "simple-icons:go",
-  "simple-icons:openjdk",
+  "simple-icons:php",
   "simple-icons:python",
   "simple-icons:git",
 ];
