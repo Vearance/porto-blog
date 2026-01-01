@@ -1,11 +1,43 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { BentoGrid, BentoGridItem } from "@/components/BentoGrid";
+import { SkillGrid } from "@/components/SkillCarousel";
+import { Separator } from "@/components/ui/separator";
+// import { interests } from "@/constants/interest";
+import { SkillsIcons } from "@/constant/skills";
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const selfIntro =
+  "Hi there, I am Veacodes.\n I enjoy writing Rust 🦀, Go and Typescript. I am interested in Programming Languages and Parallel Computing.";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Veacodes">
+  <section>
+    <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">About me</h3>
+    <p class="scroll-m-20 text-lg font-semibold tracking-tight">
+      {selfIntro}
+    </p>
+  </section>
+  <Separator />
+  <section class="w-full">
+    <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
+      Tools and Technologies
+    </h3>
+    <SkillGrid
+      client:load
+      skills={SkillsIcons}
+      rowSize={6}
+      rowsDelay={150}
+      class="mt-6 flex flex-col gap-6"
+    />
+  </section>
+  <Separator />
+  <section>
+    <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
+      My Interests
+    </h3>
+
+    <!-- <BentoGrid class="mt-6">
+      {interests.map((int) => <BentoGridItem {...int} />)}
+    </BentoGrid> -->
+  </section>
 </Layout>
