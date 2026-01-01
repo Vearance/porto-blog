@@ -1,0 +1,16 @@
+---
+// import Article from "@/components/Article.astro";
+import { getSortedBlogEntries } from "@/content/util";
+import Layout from "@/layouts/Layout.astro";
+
+const blogEntries = await getSortedBlogEntries();
+---
+
+<Layout title="Blogs">
+  <section>
+    <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">Blogs</h3>
+    <div class="mt-6 flex flex-col gap-3">
+      <!-- {blogEntries.map((entry) => <Article entry={entry} isTop={true} />)} -->
+    </div>
+  </section>
+</Layout>
