@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import path from 'path';
 
 import solidJs from '@astrojs/solid-js';
 
@@ -10,6 +11,14 @@ export default defineConfig({
   integrations: [solidJs()],
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@': path.resolve('./src'),
+        '@components': path.resolve('./src/components'),
+        '@layouts': path.resolve('./src/layouts'),
+        '@public': path.resolve('./public')
+      }
+    }
   }
 });
