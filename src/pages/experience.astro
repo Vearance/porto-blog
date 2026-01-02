@@ -1,5 +1,5 @@
 ---
-import { BentoGrid, BentoGridItem } from "@/components/BentoGrid";
+import { BentoGrid, BentoGridItem, BentoGridItemCompact } from "@/components/BentoGrid";
 import { Separator } from "@/components/ui/separator";
 import {
   openSourceContrib,
@@ -19,19 +19,19 @@ import Layout from "@/layouts/Layout.astro";
     </div>
   </section>
   <Separator />
-  <section>
+  <!-- <section>
     <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
       Open Source Contributions
     </h3>
     <div class="mt-6 flex flex-col gap-4">
       {openSourceContrib.map((props, index) => <BentoGridItem {...props} index={index} class="bg-neutral-50" />)}
     </div>
-  </section>
+  </section> -->
   <Separator />
   <section>
     <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">Projects</h3>
-    <div class="mt-6 flex flex-col gap-4">
-      {projects.map((props, index) => <BentoGridItem {...props} index={index} class="bg-neutral-50" />)}
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {projects.map((props, index) => <BentoGridItemCompact {...props} index={index} class="bg-neutral-50" />)}
     </div>
   </section>
 </Layout>

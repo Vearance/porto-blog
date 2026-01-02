@@ -46,20 +46,22 @@ export const BentoGridItem: Component<BentoGridItemProps> = (props) => {
       </div>
       <div
         class={cn(
-          "flex-1 transition duration-200 flex flex-col justify-between",
-          isEven ? "group-hover/bento:translate-x-2" : "pl-4 group-hover/bento:-translate-x-2",
+          "flex-1 transition duration-200 flex flex-col min-h-[120px]",
+          isEven
+            ? "group-hover/bento:translate-x-2"
+            : "pl-4 group-hover/bento:-translate-x-2",
         )}
       >
-        <div>
+        <div class="flex-1">
           <div class="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 flex items-center gap-2">
             {props.title}
-            {props.icon}
+            {props.icon && props.icon}
           </div>
           <div class="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
             {props.description}
           </div>
         </div>
-        {props.footer}
+        {props.footer && <div class="mt-4">{props.footer}</div>}
       </div>
     </div>
   );
@@ -79,4 +81,45 @@ export const BentoSkeletonWide: BentoGridItemProps = {
   title: <Skeleton class="w-24 h-4 bg-neutral-200" />,
   description: <Skeleton class="w-full h-4 bg-neutral-200" />,
   class: "bg-neutral-50 sm:col-span-2",
+};
+
+export const BentoGridItemCompact: Component<BentoGridItemProps> = (props) => {
+  const isEven = (props.index ?? 0) % 2 === 0;
+  
+  return (
+    <div
+      class={cn(
+        "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/20 bg-white border border-transparent flex gap-4",
+        props.isPlaceHolder && "hidden sm:flex",
+        isEven ? "flex-row" : "flex-row-reverse",
+        props.class,
+      )}
+    >
+      <div class={cn(
+        "shrink-0 flex items-center justify-center w-24 transition-transform duration-200",
+        isEven ? "group-hover/bento:rotate-3" : "group-hover/bento:-rotate-12"
+      )}>
+        {props.header}
+      </div>
+      <div
+        class={cn(
+          "flex-1 transition duration-200 flex flex-col min-h-20",
+          isEven
+            ? "group-hover/bento:translate-x-2"
+            : "pl-4 group-hover/bento:-translate-x-2",
+        )}
+      >
+        <div class="flex-1">
+          <div class="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-1 flex items-center gap-2 leading-tight">
+            {props.title}
+            {props.icon && props.icon}
+          </div>
+          <div class="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
+            {props.description}
+          </div>
+        </div>
+        {props.footer && <div class="mt-4">{props.footer}</div>}
+      </div>
+    </div>
+  );
 };
