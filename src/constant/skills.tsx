@@ -51,17 +51,44 @@ const skillIcons = [
   "simple-icons:typescript",
 ];
 
+const parseSkillName = (icon: string): string => {
+  const name = icon.split(":")[1] || icon;
+  
+  const nameMap: Record<string, string> = {
+    cplusplus: "C++",
+    csharp: "C#",
+    css3: "CSS",
+    html5: "HTML",
+    nextdotjs: "Next.js",
+    nodedotjs: "Node.js",
+    tailwindcss: "Tailwind CSS",
+    solid: "SolidJS",
+  };
+
+  if (nameMap[name]) return nameMap[name];
+
+  return name
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/^./, (c) => c.toUpperCase());
+};
+
 export const SkillsIcons = [
   ...skillIcons
     .filter(icon => icon !== "simple-icons:langfuse" && icon !== "simple-icons:pinecone")
     .map((icon) => (
-      <iconify-icon
-        icon={icon}
-        width="80"
-        height="80"
-        class="opacity-60 hover:opacity-80 transition-opacity"
-      />
+      <span title={parseSkillName(icon)} class="cursor-pointer">
+        <iconify-icon
+          icon={icon}
+          width="80"
+          height="80"
+          class="opacity-60 hover:opacity-80 transition-opacity"
+        />
+      </span>
     )),
-  <img src={langfuseIcon.src} alt="Langfuse" width="80" height="80" class="opacity-60 hover:opacity-90 transition-opacity select-none pointer-events-none" draggable="false" />,
-  <img src={pineconeIcon.src} alt="Pinecone" width="80" height="80" class="opacity-70 hover:opacity-100 transition-opacity select-none pointer-events-none" draggable="false" />,
+  <span title="Langfuse" class="cursor-pointer">
+    <img src={langfuseIcon.src} alt="Langfuse" width="80" height="80" class="opacity-60 hover:opacity-90 transition-opacity select-none" draggable="false" />
+  </span>,
+  <span title="Pinecone" class="cursor-pointer">
+    <img src={pineconeIcon.src} alt="Pinecone" width="80" height="80" class="opacity-70 hover:opacity-100 transition-opacity select-none" draggable="false" />
+  </span>,
 ];
