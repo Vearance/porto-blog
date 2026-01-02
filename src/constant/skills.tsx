@@ -15,6 +15,7 @@ const skillIcons = [
   "simple-icons:go",
   "simple-icons:graphql",
   "simple-icons:html5",
+  "simple-icons:hono",
   "devicon-plain:java",
   "simple-icons:javascript",
   "simple-icons:jest",
@@ -42,6 +43,7 @@ const skillIcons = [
   "simple-icons:redis",
   "simple-icons:rust",
   "simple-icons:solid",
+  "simple-icons:scalar",
   "simple-icons:stripe",
   "simple-icons:supabase",
   "simple-icons:tailwindcss",
@@ -60,6 +62,6 @@ export const SkillsIcons = [
         class="opacity-60 hover:opacity-80 transition-opacity"
       />
     )),
-  <img src={langfuseIcon.src} alt="Langfuse" width="80" height="80" class="opacity-60 hover:opacity-90 transition-opacity" />,
-  <img src={pineconeIcon.src} alt="Pinecone" width="80" height="80" class="opacity-70 hover:opacity-100 transition-opacity" />,
+  <img src={langfuseIcon.src} alt="Langfuse" width="80" height="80" class="opacity-60 hover:opacity-90 transition-opacity select-none pointer-events-none" draggable="false" />,
+  <img src={pineconeIcon.src} alt="Pinecone" width="80" height="80" class="opacity-70 hover:opacity-100 transition-opacity select-none pointer-events-none" draggable="false" />,
 ];
