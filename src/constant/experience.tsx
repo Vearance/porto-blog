@@ -6,6 +6,7 @@ import {
   FaSolidBox,
   FaSolidComments,
   FaSolidFire,
+  FaSolidFileLines,
 } from "solid-icons/fa";
 import { FiExternalLink } from "solid-icons/fi";
 
@@ -82,6 +83,25 @@ export const projects: BentoGridItemProps[] = [
       "Modern web music player for Navidrome music server using Subsonic API for streaming and library management.",
     class: "bg-neutral-50 sm:col-span-1",
   },
+    {
+    header: (
+      <FaSolidFileLines class="w-16 h-16 m-auto opacity-70 group-hover/bento:rotate-3 transition-all" />
+    ),
+    title: "AI CV Builder",
+    icon: (
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Github repository for pocv"
+      >
+        <FaBrandsGithub class="hover:opacity-65 transition-opacity" />
+      </a>
+    ),
+    description:
+      "AI-powered CV builder that generates professional resumes with smart formatting and content suggestions.",
+    class: "bg-neutral-50 sm:col-span-1",
+  },
   {
     header: (
       <FaBrandsTelegram class="w-18 h-18 m-auto opacity-70 group-hover/bento:rotate-3 transition-all" />
@@ -139,8 +159,6 @@ export const projects: BentoGridItemProps[] = [
       "Fire detection with ESP32 sensors and YOLO v8 computer vision, deployed on Streamlit with MongoDB integration.",
     class: "bg-neutral-50 sm:col-span-1",
   },
-
-  BentoSkeleton,
 ];
 
 export const openSourceContrib: BentoGridItemProps[] = [
