@@ -1,54 +1,61 @@
 import pineconeIcon from "@/assets/pinecone.svg";
 import langfuseIcon from "@/assets/langfuse.svg";
+import type { JSX } from "solid-js";
 
-const skillIcons = [
+const aiMLSkills = [
+  "simple-icons:langchain",
+  "simple-icons:langgraph",
+  "simple-icons:langfuse",
+  "simple-icons:ollama",
+  "simple-icons:mlflow",
+  "simple-icons:pinecone",
+  "simple-icons:pytorch",
+  "simple-icons:tensorflow",
+  "simple-icons:keras",
+  "simple-icons:numpy",
+  "simple-icons:pandas",
+  "simple-icons:pydantic",
+];
+
+const webDevSkills = [
+  "simple-icons:react",
+  "simple-icons:nextdotjs",
   "simple-icons:astro",
+  "simple-icons:solid",
+  "simple-icons:javascript",
+  "simple-icons:typescript",
+  "simple-icons:html5",
+  "simple-icons:css3",
+  "simple-icons:tailwindcss",
+  "simple-icons:nodedotjs",
+  "simple-icons:hono",
+  "simple-icons:fastapi",
+  "simple-icons:flask",
+  "simple-icons:php",
+  "simple-icons:python",
+  "simple-icons:go",
+  "simple-icons:rust",
+  "devicon-plain:java",
   "simple-icons:cplusplus",
   "simple-icons:csharp",
-  "simple-icons:css3",
-  "simple-icons:docker",
-  "simple-icons:drizzle",
-  "simple-icons:fastapi",
-  "simple-icons:firebase",
-  "simple-icons:flask",
-  "simple-icons:git",
-  "simple-icons:go",
   "simple-icons:graphql",
-  "simple-icons:html5",
-  "simple-icons:hono",
-  "devicon-plain:java",
-  "simple-icons:javascript",
-  "simple-icons:jest",
-  "simple-icons:keras",
-  "simple-icons:kubernetes",
-  "simple-icons:langchain",
-  "simple-icons:langfuse",
-  "simple-icons:langgraph",
-  "simple-icons:mlflow",
-  "simple-icons:mongodb",
-  "simple-icons:nextdotjs",
-  "simple-icons:nodedotjs",
-  "simple-icons:numpy",
-  "simple-icons:ollama",
-  "simple-icons:pandas",
-  "simple-icons:php",
-  "simple-icons:pinecone",
-  "simple-icons:posthog",
-  "simple-icons:postgresql",
-  "simple-icons:prisma",
-  "simple-icons:pydantic",
-  "simple-icons:pytorch",
-  "simple-icons:python",
-  "simple-icons:react",
-  "simple-icons:redis",
-  "simple-icons:rust",
-  "simple-icons:solid",
-  "simple-icons:scalar",
   "simple-icons:stripe",
+  "simple-icons:posthog",
+  "simple-icons:scalar",
+  "simple-icons:firebase",
+  "simple-icons:jest",
+];
+
+const databaseInfraSkills = [
+  "simple-icons:postgresql",
+  "simple-icons:mongodb",
+  "simple-icons:redis",
   "simple-icons:supabase",
-  "simple-icons:tailwindcss",
-  "simple-icons:tensorflow",
-  "simple-icons:typescript",
+  "simple-icons:drizzle",
+  "simple-icons:prisma",
+  "simple-icons:docker",
+  "simple-icons:kubernetes",
+  "simple-icons:git",
 ];
 
 const parseSkillName = (icon: string): string => {
@@ -72,23 +79,52 @@ const parseSkillName = (icon: string): string => {
     .replace(/^./, (c) => c.toUpperCase());
 };
 
-export const SkillsIcons = [
-  ...skillIcons
-    .filter(icon => icon !== "simple-icons:langfuse" && icon !== "simple-icons:pinecone")
-    .map((icon) => (
-      <span title={parseSkillName(icon)} class="cursor-pointer">
-        <iconify-icon
-          icon={icon}
-          width="80"
-          height="80"
-          class="opacity-60 hover:opacity-80 transition-opacity"
-        />
+const createSkillIcon = (icon: string): JSX.Element => {
+  if (icon === "simple-icons:langfuse") {
+    return (
+      <span title="Langfuse" class="cursor-pointer">
+        <img src={langfuseIcon.src} alt="Langfuse" width="80" height="80" class="opacity-60 hover:opacity-90 transition-opacity select-none" draggable="false" />
       </span>
-    )),
-  <span title="Langfuse" class="cursor-pointer">
-    <img src={langfuseIcon.src} alt="Langfuse" width="80" height="80" class="opacity-60 hover:opacity-90 transition-opacity select-none" draggable="false" />
-  </span>,
-  <span title="Pinecone" class="cursor-pointer">
-    <img src={pineconeIcon.src} alt="Pinecone" width="80" height="80" class="opacity-70 hover:opacity-100 transition-opacity select-none" draggable="false" />
-  </span>,
+    );
+  }
+  
+  if (icon === "simple-icons:pinecone") {
+    return (
+      <span title="Pinecone" class="cursor-pointer">
+        <img src={pineconeIcon.src} alt="Pinecone" width="80" height="80" class="opacity-70 hover:opacity-100 transition-opacity select-none" draggable="false" />
+      </span>
+    );
+  }
+
+  return (
+    <span title={parseSkillName(icon)} class="cursor-pointer">
+      <iconify-icon
+        icon={icon}
+        width="80"
+        height="80"
+        class="opacity-60 hover:opacity-80 transition-opacity"
+      />
+    </span>
+  );
+};
+
+export const skillCategories = [
+  {
+    title: "AI/ML & Data Science",
+    skills: aiMLSkills.map(createSkillIcon),
+  },
+  {
+    title: "Web Development & Programming",
+    skills: webDevSkills.map(createSkillIcon),
+  },
+  {
+    title: "Databases & Infrastructure",
+    skills: databaseInfraSkills.map(createSkillIcon),
+  },
+];
+
+export const SkillsIcons = [
+  ...aiMLSkills.map(createSkillIcon),
+  ...webDevSkills.map(createSkillIcon),
+  ...databaseInfraSkills.map(createSkillIcon),
 ];

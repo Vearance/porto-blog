@@ -3,7 +3,7 @@ import { BentoGrid, BentoGridItem } from "@/components/BentoGrid";
 import { SkillGrid } from "@/components/SkillCarousel";
 import { Separator } from "@/components/ui/separator";
 // import { interests } from "@/constants/interest";
-import { SkillsIcons } from "@/constant/skills";
+import { skillCategories } from "@/constant/skills";
 import Layout from "../layouts/Layout.astro";
 
 const selfIntro =
@@ -19,16 +19,23 @@ const selfIntro =
   </section>
   <Separator />
   <section class="w-full">
-    <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
+    <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight mb-2">
       Tools and Technologies
     </h3>
-    <SkillGrid
-      client:load
-      skills={SkillsIcons}
-      rowSize={6}
-      rowsDelay={150}
-      class="mt-6 flex flex-col gap-6"
-    />
+    {skillCategories.map((category) => (
+      <div class="mb-8">
+        <h4 class="scroll-m-20 text-xl font-medium tracking-tight mb-4 text-muted-foreground">
+          {category.title}
+        </h4>
+        <SkillGrid
+          client:load
+          skills={category.skills}
+          rowSize={6}
+          rowsDelay={150}
+          class="flex flex-col gap-6"
+        />
+      </div>
+    ))}
   </section>
   <!-- <Separator /> -->
   <!-- <section> -->
