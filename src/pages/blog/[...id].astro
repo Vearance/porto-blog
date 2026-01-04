@@ -1,6 +1,6 @@
 ---
 import { BlogPagination } from "@/components/BlogPagination";
-// import Article from "@/components/Article.astro";
+import Article from "@/components/Article.astro";
 import { Separator } from "@/components/ui/separator";
 import { getSortedBlogEntries } from "@/content/util";
 import Layout from "@/layouts/Layout.astro";
@@ -60,5 +60,18 @@ const { Content } = await render(entry);
   />
 
   <Separator />
+
+    <section>
+    <h4 class="scroll-m-20 text-xl font-semibold tracking-tight">
+      More blogs from me
+    </h4>
+    <div class="mt-6 flex flex-col gap-3">
+      {
+        otherEntries.map((entry) => (
+          <Article entry={entry} isTop={false} />
+        ))
+      }
+    </div>
+  </section>
 
 </Layout>

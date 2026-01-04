@@ -3,12 +3,13 @@ import { defineConfig } from 'astro/config';
 import path from 'path';
 
 import solidJs from '@astrojs/solid-js';
+import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [solidJs()],
+  integrations: [solidJs(), mdx()],
 
   vite: {
     plugins: [tailwindcss()],
