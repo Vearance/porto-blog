@@ -7,7 +7,7 @@ export const BlogItemSchema = z.object({
   thumbnail: z.string().optional(),
   description: z.string(),
   preview: z.string(),
-  categories: z.array(z.string()),
+  categories: z.array(z.string()).optional(),
 });
 
 export type BlogItem = z.infer<typeof BlogItemSchema>;

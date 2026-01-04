@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 export type BlogPostProps = {
   entry: CollectionEntry<"blog">;
@@ -16,38 +17,55 @@ const pubDate = new Date(item.pubDate).toLocaleDateString("en-US", {
 });
 ---
 
-<article class="flex flex-col">
-  <div class="flex justify-between">
+<article class="flex gap-4">
+  {item.thumbnail && (
     <a
       href={`/blog/${entry.id}`}
       aria-label={item.description}
       data-astro-prefetch
+      class="shrink-0"
     >
-      <h4
-        class="scroll-m-20 text-md font-semibold tracking-tight hover:underline"
-        transition:name={`blog-${entry.id}-${isTop ? "top" : "other"}`}
-      >
-        {item.title}
-      </h4>
+      <img 
+        src={item.thumbnail} 
+        alt={item.title}
+        class="w-20 h-12 object-cover rounded-xs select-none pointer-events-none"
+      />
     </a>
-    <time
-      datetime={item.pubDate.toISOString()}
-      class="text-sm text-neutral-500"
-    >
-      {pubDate}
-    </time>
-  </div>
+  )}
+  
+  <div class="flex flex-col flex-1 min-w-0">
+    <div class="flex justify-between">
+      <a
+        href={`/blog/${entry.id}`}
+        aria-label={item.description}
+        data-astro-prefetch
+      >
+        <h4
+          class="scroll-m-20 text-md font-semibold tracking-tight hover:underline"
+          transition:name={`blog-${entry.id}-${isTop ? "top" : "other"}`}
+        >
+          {item.title}
+        </h4>
+      </a>
+      <time
+        datetime={item.pubDate.toISOString()}
+        class="text-sm text-neutral-500 shrink-0 ml-2"
+      >
+        {pubDate}
+      </time>
+    </div>
 
-  <div class="flex justify-between items-center">
-    <p class="text-sm text-muted-foreground truncate">{item.preview}</p>
-    <ul class="flex gap-1">
-      {
-        item.categories.map((category: string) => (
-          <li class="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded-s-full rounded-e-full text-nowrap shadow-xs">
-            {category}
-          </li>
-        ))
-      }
-    </ul>
+    <div class="flex justify-between items-center">
+      <p class="text-sm text-muted-foreground truncate">{item.preview}</p>
+      <ul class="flex gap-1 shrink-0 ml-2">
+        {
+          item.categories?.map((category: string) => (
+            <li class="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded-s-full rounded-e-full text-nowrap shadow-xs">
+              {category}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </article>
