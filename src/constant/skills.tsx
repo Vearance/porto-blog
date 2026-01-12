@@ -44,6 +44,9 @@ const webDevSkills = [
   "simple-icons:scalar",
   "simple-icons:firebase",
   "simple-icons:jest",
+  "simple-icons:bun",
+  "simple-icons:bruno",
+  "simple-icons:reactquery",
 ];
 
 const databaseInfraSkills = [
@@ -70,6 +73,7 @@ const parseSkillName = (icon: string): string => {
     nodedotjs: "Node.js",
     tailwindcss: "Tailwind CSS",
     solid: "SolidJS",
+    reactquery: "TanStack Query",
   };
 
   if (nameMap[name]) return nameMap[name];
