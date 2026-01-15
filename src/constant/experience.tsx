@@ -2,11 +2,11 @@ import { BentoSkeleton, type BentoGridItemProps } from "@/components/BentoGrid";
 import { getImage } from "astro:assets";
 import {
   FaBrandsGithub,
-  FaBrandsTelegram,
+  FaSolidDatabase,
   FaSolidBox,
   FaSolidComments,
   FaSolidFire,
-  FaSolidFileLines,
+  FaSolidUser,
 } from "solid-icons/fa";
 import { FiExternalLink } from "solid-icons/fi";
 
@@ -85,40 +85,30 @@ export const projects: BentoGridItemProps[] = [
   },
     {
     header: (
-      <FaSolidFileLines class="w-16 h-16 m-auto opacity-70 group-hover/bento:rotate-3 transition-all" />
+      <FaSolidUser class="w-14 h-14 m-auto opacity-70 group-hover/bento:rotate-3 transition-all" />
     ),
     title: "AI CV Builder",
-    icon: (
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Github repository for pocv"
-      >
-        <FaBrandsGithub class="hover:opacity-65 transition-opacity" />
-      </a>
-    ),
     description:
       "AI-powered CV builder that generates professional resumes with smart formatting and content suggestions.",
     class: "bg-neutral-50 sm:col-span-1",
   },
   {
     header: (
-      <FaBrandsTelegram class="w-18 h-18 m-auto opacity-70 group-hover/bento:rotate-3 transition-all" />
+      <FaSolidDatabase class="w-16 h-16 m-auto opacity-70 group-hover/bento:rotate-3 transition-all" />
     ),
-    title: "Telegram AI Agent",
+    title: "Document RAG",
     icon: (
       <a
-        href="https://github.com/Vearance/gemini-tele"
+        href="https://github.com/Vearance/rag-system-docker"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Github repository for Telegram AI Agent"
+        aria-label="Github repository for Document RAG"
       >
         <FaBrandsGithub class="hover:opacity-65 transition-opacity" />
       </a>
     ),
     description:
-      "Real-time AI-powered Telegram bot with NLP capabilities for conversational query processing.",
+      "Retrieval Augmented-Generation system with full local support using Ollama and Docker.",
     class: "bg-neutral-50 sm:col-span-1",
   },
   {
@@ -156,7 +146,7 @@ export const projects: BentoGridItemProps[] = [
       </a>
     ),
     description:
-      "Fire detection with ESP32 sensors and YOLO v8 computer vision, deployed on Streamlit with MongoDB integration.",
+      "Fire detection with ESP32 sensors and YOLO v8 as computer vision, deployed on Streamlit with MongoDB integration.",
     class: "bg-neutral-50 sm:col-span-1",
   },
 ];
@@ -223,17 +213,12 @@ export const professionalExperiences: BentoGridItemProps[] = [
       <ul class="list-inside list-disc">
         <li>
           {
-            "Developed a Document RAG Question-Answering system using Ollama for LLM inference, Docker, Python, and Pinecone."
+            "Built an enterprise Document RAG QA system using Ollama, Docker, Python, and Pinecone for internal knowledge access."
           }
         </li>
         <li>
           {
-            "Implemented end-to-end pipeline including document ingestion, embedding generation, similarity search, and response generation with context awareness."
-          }
-        </li>
-        <li>
-          {
-            "Increased customer satisfaction scores by around 20% through improved response accuracy and reduced query resolution time."
+            "Delivered a full RAG pipeline that reduced employee search time by ~35% and improved response accuracy by ~25% across teams."
           }
         </li>
       </ul>
