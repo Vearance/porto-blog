@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import "@/styles/global.css";
 import { ClientRouter, fade } from "astro:transitions";
 import favicon from "../assets/favicon.ico";
+import Analytics from "@vercel/analytics/astro";
 
 export type LayoutProps = {
   title: string;
@@ -36,6 +37,7 @@ const { title = "Veacodes" } = Astro.props as LayoutProps;
 
   </head>
   <body class="antialiased bg-gray-50">
+    <Analytics />
     <div
       class="min-h-dvh w-dvw max-w-4xl mx-auto flex flex-col gap-6 bg-background py-12 px-3 sm:p-12"
     >
