@@ -71,6 +71,7 @@ const parseSkillName = (icon: string): string => {
     html5: "HTML",
     nextdotjs: "Next.js",
     nodedotjs: "Node.js",
+    mlflow: "MLflow",
     tailwindcss: "Tailwind CSS",
     solid: "SolidJS",
     reactquery: "TanStack Query",
